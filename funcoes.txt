@@ -1,0 +1,54 @@
+As funções são definidas através da palavra reservada def, seguida por um nome e os parâmetros entre parênteses. Como todo bloco de código em Python, o caractere : define o início do bloco, e a indentação define seu fim.
+
+Os parâmetros podem ser passados de forma:
+
+posicional: são aqueles definidos por meio da posição em que cada um é passado;
+nomeada: são definidos por meio de seus nomes.
+
+
+ex:
+
+def soma(x, y):
+    return x + y
+
+soma(2, 2)  # os parâmetros aqui são posicionais
+
+soma(x=2, y=2)  # aqui estamos nomeando os parâmetros
+
+
+Os parâmetros também podem ser variádicos, ou seja, variam em sua quantidade.
+
+Anota aí ✏️: Parâmetros posicionais variádicos são acessados como uma tupla no interior de uma função, e parâmetros nomeados variádicos como um dicionário.
+
+ex:
+
+def concat_like_tuple(*args):
+    final_string = ""
+    for index, name in enumerate(args, 1):
+        final_string += f"O nome da pessoa {index} é {name}.\n"
+    return final_string
+
+
+def concat_like_dict(**kwargs):
+    final_string = (
+        f'{kwargs["nome"]} {kwargs["sobrenome"]} tem {kwargs["idade"]} anos.\n'
+    )
+    return final_string
+
+
+concat_like_tuple("Cris", "Wallace", "Carol")
+# saída:
+# O nome da pessoa 1 é Cris.
+# O nome da pessoa 2 é Wallace.
+# O nome da pessoa 3 é Carol.
+
+concat_like_dict(nome="Felipe", sobrenome="Silva", idade=25)
+# saída:
+# Felipe Silva tem 25 anos.
+
+
+
+
+obs: As variáveis definidas dentro das funções tem escopo local. Porém, quando uma função não encontra um nome no escopo local, ela irá procurar no espaço de nomes global.
+
+Em alguns casos, podemos querer limitar um parâmetro em nomeado ou posicional para evitar ambiguidades e/ou aumentar legibilidade.
